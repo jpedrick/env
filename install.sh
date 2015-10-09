@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir -p ~/.vim/bundle
+cp .vim/vim_plugins ~/.vim/
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -c 'PluginInstall' -c 'q' 
