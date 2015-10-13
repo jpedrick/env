@@ -1,2 +1,5 @@
-# env - Dev environment that is nearly perfect
+# env
+Dev environment that is nearly perfect
+
+install by running install.sh
 
