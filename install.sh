@@ -20,6 +20,7 @@ trap 'error_exit ${LINENO}' ERR
 mkdir -p ~/.vim/bundle
 cp .vim/vim_plugins ~/.vim/
 
+echo Install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -c 'PluginInstall' -c 'q' 
 vim -c 'so %' -c 'q' Align.vba 
@@ -30,13 +31,26 @@ popd
 cp .Xdefaults ~/
 xrdb ~/.Xdefaults
 
+echo compile YouCompleteMe with clang-completer
 pushd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
 popd
 
+echo Installing tmux
 sudo apt-get install tmux
 
+echo Installing tmux package manager
 mkdir -p ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cp .tmux.conf ~/
+
+echo Upgrading git
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+git --version
+
+echo Installing git WebUI
+git clone https://github.com/alberthier/git-webui.git
+git config --global alias.webui \!$PWD/git-webui/release/libexec/git-core/git-webui
 

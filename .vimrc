@@ -26,7 +26,7 @@ let g:solarized_termcolors = 256
 "options: low, normal, high
 let g:solarized_contrast = "normal" 
 let g:solarized_visibility = "high"
-let g:solarized_termtrans = 0
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 "airline option
