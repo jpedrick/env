@@ -11,6 +11,7 @@ set mouse=a
 set clipboard=unnamedplus
 "set list
 set encoding=utf-8
+set switchbuf=useopen,usetab,newtab
 
 if has("mouse_sgr")
     set ttymouse=sgr
