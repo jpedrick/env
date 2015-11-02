@@ -40,6 +40,7 @@ nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_global_ycm_extra_conf = '/home/jpedrick/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 
+nnoremap <C-P> :FZF<CR>
 nnoremap <F2> :YcmCompleter GoTo<CR>
 nnoremap <C-F2> :YcmCompleter GoToImplementation<CR>
 nnoremap <F3> :YcmCompleter GetType<CR>
@@ -58,3 +59,5 @@ let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch' }
 
 "cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
+set timeoutlen=1000 ttimeoutlen=0
+
