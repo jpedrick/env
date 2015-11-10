@@ -130,3 +130,17 @@ git config --global alias.webui \!$PWD/git-webui/release/libexec/git-core/git-we
 fi
 ((STEP+=1))
 
+ST_GIT=http://git.suckless.org/st
+if (( PROGRESS < STEP )); then
+echo Installing st
+sudo apt-get install libxt-devel
+git clone ${ST_GIT}
+pushd st
+cp ../st-config/config.h .
+make
+make install PREFIX=$HOME
+popd
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
