@@ -132,6 +132,15 @@ git config --global user.name
 fi
 ((STEP+=1))
 
+if (( PROGRESS < STEP )); then
+git config --global push.default simple
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
+
+if (( PROGRESS < STEP )); then
+
 if [ -z ${GIT_EMAIL+x} ]; then echo "Must set GIT_EMAIL environment variable to proceed" exit 1; fi
 git config --global user.email "${GIT_EMAIL}"
 git config --global user.email 
