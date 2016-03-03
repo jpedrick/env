@@ -32,10 +32,11 @@ STEP=0
 if (( PROGRESS < STEP )); then
 
 mkdir -p ~/.vim/bundle
-cp -P .vim/vim_plugins ~/.vim/
+cp -f .vim/vim_plugins ~/.vim/
 pushd ~/
-ln -s .vim/vimrc ~/.vimrc
-ln -s .vim .config/nvim
+cp -f .vim/vimrc ~/.vim/
+ln -snf .vim/vimrc ~/.vimrc
+ln -snf .vim .config/nvim
 popd
 
 ((PROGRESS+=1))
@@ -46,8 +47,10 @@ if (( PROGRESS < STEP )); then
 
 echo Install Nvim
 git clone https://github.com/neovim/neovim.git
+pushd neovim
 make
 sudo make install
+popd 
 
 ((PROGRESS+=1))
 fi
@@ -113,9 +116,25 @@ fi
 if (( PROGRESS < STEP )); then
 echo Upgrading git
 sudo add-apt-repository ppa:git-core/ppa
-sudo apt-get update
+sudo apt-get update || true
 sudo apt-get install git
 git --version
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
+
+if (( PROGRESS < STEP )); then
+git config --global user.name "$(getent passwd $USER | awk '{split($0,ent,":"); print ent[5]}')"
+git config --global user.name 
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
+
+if [ -z ${GIT_EMAIL+x} ]; then echo "Must set GIT_EMAIL environment variable to proceed" exit 1; fi
+git config --global user.email "${GIT_EMAIL}"
+git config --global user.email 
 
 ((PROGRESS+=1))
 fi
@@ -125,6 +144,16 @@ if (( PROGRESS < STEP )); then
 echo Installing git WebUI
 git clone https://github.com/alberthier/git-webui.git
 git config --global alias.webui \!$PWD/git-webui/release/libexec/git-core/git-webui
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
+
+if (( PROGRESS < STEP )); then
+
+sudo apt-add-repository ppa:george-edison55/cmake-3.x
+sudo apt-get update || true
+sudo apt-get install cmake
 
 ((PROGRESS+=1))
 fi

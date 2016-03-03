@@ -13,6 +13,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
