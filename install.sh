@@ -118,7 +118,7 @@ if (( PROGRESS < STEP )); then
 echo Upgrading git
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update || true
-sudo apt-get install git
+sudo apt-get install git gitk
 git --version
 
 ((PROGRESS+=1))
