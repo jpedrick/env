@@ -33,8 +33,8 @@ if (( PROGRESS < STEP )); then
 
 mkdir -p ~/.vim/bundle
 cp -f .vim/vim_plugins ~/.vim/
-pushd ~/
 cp -f .vim/vimrc ~/.vim/
+pushd ~/
 ln -snf .vim/vimrc ~/.vimrc
 ln -snf .vim .config/nvim
 popd
@@ -58,6 +58,7 @@ fi
 
 if (( PROGRESS < STEP )); then
 echo Install Vundle
+mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -c 'PluginInstall' -c 'q' 
 vim -c 'so %' -c 'q' Align.vba 
@@ -171,14 +172,28 @@ fi
 ST_GIT=http://git.suckless.org/st
 if (( PROGRESS < STEP )); then
 echo Installing st
-sudo apt-get install libxt-devel
+sudo apt-get install libxt-dev libxft-dev
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
+
+if (( PROGRESS < STEP )); then
+
 git clone ${ST_GIT}
+
+((PROGRESS+=1))
+fi
+((STEP+=1))
+
+if (( PROGRESS < STEP )); then
 pushd st
 cp ../st-config/config.h .
 make
 make install PREFIX=$HOME
 popd
-
 ((PROGRESS+=1))
 fi
 ((STEP+=1))
+
+echo done
